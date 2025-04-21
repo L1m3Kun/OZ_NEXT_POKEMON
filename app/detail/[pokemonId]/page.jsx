@@ -1,6 +1,6 @@
 import FlipCard from "@/components/FlipCard";
 
-const url = process.env.URL;
+const url = process.env.NEXT_PUBLIC_URL;
 
 const getPokemon = async (pokemonId) => {
   // SSR 사용을 위한 cache 설정

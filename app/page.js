@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Card from "@/components/Card";
 
-const url = process.env.URL;
+const url = process.env.NEXT_PUBLIC_URL;
 
 const getAllPokemon = async () => {
   // SSR 사용을 위한 cache 설정
