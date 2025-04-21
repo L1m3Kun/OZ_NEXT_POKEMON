@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Card from "@/components/Card";
 
+const url = process.env.URL;
+
 const getAllPokemon = async () => {
   // SSR 사용을 위한 cache 설정
-  const pokemonList = await fetch("http://localhost:3000/api/pokemon", {
+  const pokemonList = await fetch(url + "/api/pokemon", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
     cache: "no-store",

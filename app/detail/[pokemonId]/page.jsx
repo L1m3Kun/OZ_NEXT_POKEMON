@@ -1,15 +1,14 @@
 import FlipCard from "@/components/FlipCard";
 
+const url = process.env.URL;
+
 const getPokemon = async (pokemonId) => {
   // SSR 사용을 위한 cache 설정
-  const pokemonList = await fetch(
-    "http://localhost:3000/api/pokemon/" + pokemonId + "/",
-    {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      cache: "no-store",
-    }
-  );
+  const pokemonList = await fetch(url + "/api/pokemon/" + pokemonId + "/", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    cache: "no-store",
+  });
   const pokemon = await pokemonList.json();
   return { pokemon: pokemon.pokemonData };
 };
