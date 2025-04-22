@@ -17,7 +17,7 @@ const getAllPokemon = async () => {
 
 export default async function Main() {
   const { pokemonData } = await getAllPokemon();
-
+  console.log(pokemonData);
   return (
     <div className="flex flex-wrap gap-3 justify-center items-center mt-3">
       {pokemonData.map((el) => (
