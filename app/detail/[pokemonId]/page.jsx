@@ -1,4 +1,5 @@
 import FlipCard from "@/components/FlipCard";
+import NotFound from "./not-found";
 
 const url = process.env.NEXT_PUBLIC_URL;
 
@@ -17,13 +18,17 @@ export default async function Detail({ params }) {
   const { pokemonId } = params;
   const { pokemon } = await getPokemon(pokemonId);
 
-  return (
-    <div className="bg-white flex flex-col justify-center items-center border py-[30px] px-[60px] rounded-[10px] border-b-[8px] border-r-[8px] border-black">
-      <div className="text-[28px] mb-[10px]">{pokemon.name}</div>
-      <div className="whitespace-pre-wrap text-center">
-        {pokemon.description}
+  if (Number(pokemonId) > 151) {
+    return <NotFound />;
+  } else {
+    return (
+      <div className="bg-white flex flex-col justify-center items-center border py-[30px] px-[60px] rounded-[10px] border-b-[8px] border-r-[8px] border-black">
+        <div className="text-[28px] mb-[10px]">{pokemon.name}</div>
+        <div className="whitespace-pre-wrap text-center">
+          {pokemon.description}
+        </div>
+        <FlipCard front={pokemon.front} back={pokemon.back} />
       </div>
-      <FlipCard front={pokemon.front} back={pokemon.back} />
-    </div>
-  );
+    );
+  }
 }
